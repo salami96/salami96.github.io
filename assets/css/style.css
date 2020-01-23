@@ -1,0 +1,43 @@
+.profile {
+    width: 50%;
+}
+@media(min-width: 768px){
+    .profile {
+        width: 20%;
+    }
+}
+.feather.icon {
+    padding: 15px !important;
+}
+.social-icons a svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: text-top;
+}
+.whats img {
+    width: 90%;
+}
+.whats {
+    padding: 0;
+    position: fixed;
+    background: #30BF39 !important;
+    bottom: 1.5em;
+    right: 1.5em;
+    z-index: 1000;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 1.75em;
+    border: 2px solid white;
+    transition: all 0.1s;
+}
+.whats:hover {
+    height: 3.6em;
+    width: 3.6em;
+    border: 2px solid white;
+    padding: 0;
+
+}
+.nav-link.active {
+    border: 2px solid white;
+    border-radius: 1.75em;
+}
