@@ -41,3 +41,7 @@
     border: 2px solid white;
     border-radius: 1.75em;
 }
+.tags-pills {
+    display: flex;
+    gap: 0.5em;
+}

@@ -1,139 +1,152 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>Contato - Gabriel Salami</title>
-        <link rel="icon" type="image/x-icon" href="/assets/img/avatar.ico">
-        <meta name="theme-color" content="#4389FA">
-        <meta name="apple-mobile-web-app-status-bar-style" content="#4389FA">
-        <meta name="description" content="Desenvolvedor BackEnd, FrontEnd e Mobile">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="manifest" href="manifest.json">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
-        <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
-    </head>
-    <body>
-        <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-            <div class="container"><a class="navbar-brand logo" href="/">Gabriel Salami</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse"
-                    id="navbarNav">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="/projetos.html">Projetos</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="/cv.html">CV</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link active" href="/contato.html">Contato</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <main class="page contact-page">
-            <section class="portfolio-block contact">
-                <div class="container">
-                    <div class="heading">
-                        <h2>Contato</h2>
-                    </div>
-                    <form action="/" method="POST">
-                        <div class="form-group"><label for="name">Seu nome</label><input class="form-control item" type="text" id="name" required></div>
-                        <div class="form-group"><label for="subject">Assunto</label><input class="form-control item" type="text" id="subject" required></div>
-                        <div class="form-group"><label for="email">Email</label><input class="form-control item" type="email" id="email" required></div>
-                        <div class="form-group">
-                            <label for="phone">Telefone</label>
-                            <input class="form-control item" placeholder="(00) 00000-0000" maxlength="15" minlength="14" type="tel" id="phone" required>
-                        </div>
-                        <div class="form-group"><label for="message">Mensagem</label><textarea class="form-control item" id="message" required></textarea></div>
-                        <div class="form-group">
-                            <button class="btn btn-primary btn-block btn-lg" type="submit">
-                                <i data-feather="send"></i>
-                                Enviar
-                            </button>
-                        </div>
-                        <div class="alert alert-success text-center" hidden>
-                            <i data-feather="check"></i>
-                            <hr>
-                            Sua mensagem foi enviada com sucesso!
-                        </div>
-                        <div class="alert alert-danger text-center" hidden>
-                            <i data-feather="x-octagon"></i>
-                            <hr>
-                            Houve um problema, mas você também pode optar por mandar mensagem pelo WhatsApp pelo botao no canto inferior direito! 
-                        </div>
-                    </form>
-                </div>
-            </section>
-        </main>
-        <footer class="page-footer gradient">
-            <div class="container">
-                <div class="links"><a href="#">Sobre mim</a><a href="#">Contato</a><a href="#">Projetos</a></div>
-                <div class="social-icons">
-                    <a href="https://facebook.com/gabriel.zanattosalami" target="_blank" rel="noopener, noreferrer, nofollow"><i data-feather="facebook"></i></a>
-                    <a href="http://github.com/salami96" target="_blank" rel="noopener, noreferrer, nofollow"><i data-feather="github"></i></a>
-                    <a href="https://www.linkedin.com/in/gabriel-zanatto-salami/" target="_blank" rel="noopener, noreferrer, nofollow"><i data-feather="linkedin"></i></a>
-                </div>
-            </div>
-        </footer>
-        <button class="btn btn-success m-1 whats" onclick="whats()">
-            <img src="/assets/img/wpp.png" alt="Icone do WhatsApp">
-        </button>
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
-        <script src="assets/js/theme.js"></script>
-        <script src="https://unpkg.com/feather-icons"></script>
-            <!-- mask -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-        <script type="text/javascript">
-            feather.replace();
-            $(document).ready(function() {
-                function whats() {
-                    window.open(
-                        'https://api.whatsapp.com/send?phone=5551999262182&text='
-                        + 'Olá, tudo bem? Peguei seu contato no www.gabrielsalami.dev!',
-                        '_blank',
-                    );
-                }
-                $('#phone').mask('(00) 00000-0000');
-                $('form').submit(function(event){
-                    event.preventDefault();
-                    var msg = {
-                        name: $('#name').val(),
-                        email: $('#email').val(),
-                        subject: $('#subject').val(),
-                        phone: $('#phone').val(),
-                        message: $('#message').val()
-                    }
-                    $.ajax({
-                        url: "http://173.199.117.116:8081/send-email/for-me/",
-                        type: "POST",
-                        crossDomain: true,
-                        data: msg,
-                        dataType: "json",
-                        success: function(result){
-                            console.log(result);
-                            if (result.Status == "success") {
-                                $('.alert-success').fadeIn().attr('hidden', false);
-                                $('#name').val("")
-                                $('#email').val("")
-                                $('#subject').val("")
-                                $('#phone').val("")
-                                $('#message').val("")
-                            } else {
-                                $('.alert-danger').fadeIn().attr('hidden', false);
-                                $('.whats').fadeOut();
-                                $('.whats').fadeIn();
-                            }
-                        },
-                        error: function(xhr,status,error){
-                            console.log(xhr);
-                            console.log(status);
-                            console.log(error);
-                            $('.alert-danger').fadeIn().attr('hidden', false);
-                        }
-                    }); 
-                }); 
-            }); 
 
-        </script>
-    </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Contato - Gabriel Salami</title>
+  <link rel="icon" type="image/x-icon" href="/assets/img/avatar.ico">
+  <meta name="theme-color" content="#4389FA">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#4389FA">
+  <meta name="description" content="Desenvolvedor BackEnd, FrontEnd e Mobile">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+  <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+    <div class="container"><a class="navbar-brand logo" href="/">Gabriel Salami</a><button data-toggle="collapse"
+        class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item" role="presentation"><a class="nav-link" href="/projetos.html">Projetos</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href="/cv.html">CV</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link active" href="/contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="page contact-page">
+    <section class="portfolio-block contact">
+      <div class="container">
+        <div class="heading">
+          <h2>Contato</h2>
+        </div>
+        <form action="/" method="POST">
+          <div class="form-group"><label for="name">Seu nome</label><input class="form-control item" type="text"
+              id="name" required></div>
+          <div class="form-group"><label for="subject">Assunto</label><input class="form-control item" type="text"
+              id="subject" required></div>
+          <div class="form-group"><label for="email">Email</label><input class="form-control item" type="email"
+              id="email" required></div>
+          <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input class="form-control item" placeholder="(00) 00000-0000" maxlength="15" minlength="14" type="tel"
+              id="phone" required>
+          </div>
+          <div class="form-group"><label for="message">Mensagem</label><textarea class="form-control item" id="message"
+              required></textarea></div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block btn-lg" type="submit">
+              <i data-feather="send"></i>
+              Enviar
+            </button>
+          </div>
+          <div class="alert alert-success text-center" hidden>
+            <i data-feather="check"></i>
+            <hr>
+            Sua mensagem foi enviada com sucesso!
+          </div>
+          <div class="alert alert-danger text-center" hidden>
+            <i data-feather="x-octagon"></i>
+            <hr>
+            Houve um problema, mas você também pode optar por mandar mensagem pelo WhatsApp pelo botao no canto inferior
+            direito!
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="page-footer gradient">
+    <div class="container">
+      <div class="social-icons">
+        <a href="https://facebook.com/gabriel.zanattosalami" target="_blank" rel="noopener, noreferrer, nofollow"><i
+            data-feather="facebook"></i></a>
+        <a href="http://github.com/salami96" target="_blank" rel="noopener, noreferrer, nofollow"><i
+            data-feather="github"></i></a>
+        <a href="https://www.linkedin.com/in/gabriel-zanatto-salami/" target="_blank"
+          rel="noopener, noreferrer, nofollow"><i data-feather="linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+  <button class="btn btn-success m-1 whats" onclick="whats()">
+    <img src="/assets/img/wpp.png" alt="Icone do WhatsApp">
+  </button>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <!-- mask -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+  <script type="text/javascript">
+    feather.replace();
+    $(document).ready(function () {
+      function whats() {
+        window.open(
+          'https://api.whatsapp.com/send?phone=5551999262182&text='
+          + 'Olá, tudo bem? Peguei seu contato no www.gabrielsalami.dev!',
+          '_blank',
+        );
+      }
+      $('#phone').mask('(00) 00000-0000');
+      $('form').submit(function (event) {
+        event.preventDefault();
+        var msg = {
+          name: $('#name').val(),
+          email: $('#email').val(),
+          subject: $('#subject').val(),
+          phone: $('#phone').val(),
+          message: $('#message').val()
+        }
+        $.ajax({
+          url: "http://173.199.117.116:8081/send-email/for-me/",
+          type: "POST",
+          crossDomain: true,
+          data: msg,
+          dataType: "json",
+          success: function (result) {
+            console.log(result);
+            if (result.Status == "success") {
+              $('.alert-success').fadeIn().attr('hidden', false);
+              $('#name').val("")
+              $('#email').val("")
+              $('#subject').val("")
+              $('#phone').val("")
+              $('#message').val("")
+            } else {
+              $('.alert-danger').fadeIn().attr('hidden', false);
+              $('.whats').fadeOut();
+              $('.whats').fadeIn();
+            }
+          },
+          error: function (xhr, status, error) {
+            console.log(xhr);
+            console.log(status);
+            console.log(error);
+            $('.alert-danger').fadeIn().attr('hidden', false);
+          }
+        });
+      });
+    });
+
+  </script>
+</body>
+
 </html>
