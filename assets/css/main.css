@@ -302,6 +302,7 @@ p { margin: 0 0 1rem; }
   object-fit: cover;
   border-radius: 50%;
   border: 5px solid var(--bg);
+  image-rendering: pixelated;
 }
 .hero-portrait .chip {
   position: absolute;
