@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.gabrielsalami.dev/</loc>
+    <loc>https://salami96.github.io/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.gabrielsalami.dev/s-trat.html</loc>
+    <loc>https://salami96.github.io/s-trat.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.gabrielsalami.dev/copac.html</loc>
+    <loc>https://salami96.github.io/copac.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.gabrielsalami.dev/produtos-app.html</loc>
+    <loc>https://salami96.github.io/produtos-app.html</loc>
     <priority>0.8</priority>
   </url>
 </urlset>

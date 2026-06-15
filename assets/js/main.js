@@ -5,7 +5,7 @@
   "use strict";
 
   var WHATS_PHONE = "5551999262182";
-  var WHATS_MSG = "Olá, tudo bem? Peguei seu contato no www.gabrielsalami.dev!";
+  var WHATS_MSG = "Olá, tudo bem? Peguei seu contato no salami96.github.io!";
 
   /* ---------- Ano no rodapé ---------- */
   var yearEl = document.getElementById("year");

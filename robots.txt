@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.gabrielsalami.dev/sitemap.xml
+Sitemap: https://salami96.github.io/sitemap.xml
