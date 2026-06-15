@@ -1,1 +1,12 @@
-{"icons":[],"display":"fullscreen"}
+{
+  "name": "Gabriel Salami — Portfólio",
+  "short_name": "G. Salami",
+  "description": "Desenvolvedor Full Stack & Mobile",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e1a",
+  "theme_color": "#0a0e1a",
+  "icons": [
+    { "src": "/assets/img/avatar.ico", "sizes": "64x64", "type": "image/x-icon" }
+  ]
+}
