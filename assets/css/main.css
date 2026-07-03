@@ -290,19 +290,20 @@ p { margin: 0 0 1rem; }
 .hero-portrait { position: relative; justify-self: center; }
 .hero-portrait .ring {
   position: relative;
-  width: clamp(220px, 26vw, 320px);
-  aspect-ratio: 1;
-  border-radius: 50%;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
   padding: 6px;
   background: var(--accent-grad);
   box-shadow: var(--shadow);
 }
-.hero-portrait .ring img {
+.hero-portrait .ring img,
+.hero-portrait .ring video {
   width: 100%; height: 100%;
   object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid var(--bg);
-  image-rendering: pixelated;
+  border-radius: 18px;
+  display: block;
 }
 .hero-portrait .chip {
   position: absolute;
@@ -607,7 +608,7 @@ p { margin: 0 0 1rem; }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-portrait { order: -1; }
-  .hero-portrait .ring { width: clamp(180px, 50vw, 240px); }
+  .hero-portrait .ring { max-width: 420px; }
   .cards, .projects { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(2, 1fr); }
   .timeline-wrap { grid-template-columns: 1fr; gap: 48px; }
@@ -632,7 +633,7 @@ p { margin: 0 0 1rem; }
   .nav-toggle { display: inline-grid; }
   .cards, .projects, .steps { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
-  .hero-portrait .chip-1 { top: 0; left: 0; }
-  .hero-portrait .chip-2 { top: 42%; right: 0; bottom: auto; }
-  .hero-portrait .chip-3 { bottom: 2%; left: 0; }
+  .hero-portrait .chip-1 { top: 7%; left: 2%; }
+  .hero-portrait .chip-2 { top: 40%; right: 0; bottom: auto; }
+  .hero-portrait .chip-3 { bottom: 5%; left: 0; }
 }
