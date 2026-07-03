@@ -5,7 +5,7 @@
   "use strict";
 
   var WHATS_PHONE = "5551999262182";
-  var WHATS_MSG = "Olá, tudo bem? Peguei seu contato no salami96.github.io!";
+  var WHATS_MSG = "Olá, Gabriel! Vi seu site e queria um orçamento pro meu negócio.";
 
   /* ---------- Ano no rodapé ---------- */
   var yearEl = document.getElementById("year");
@@ -131,9 +131,9 @@
           .catch(function () { showAlert(form, "error"); });
       } else {
         var text =
-          "Olá Gabriel! Vim pelo seu portfólio.\n\n" +
+          "Olá, Gabriel! Vim pelo seu site.\n\n" +
           "*Nome:* " + data.name + "\n" +
-          "*Assunto:* " + data.subject + "\n" +
+          "*Negócio:* " + data.subject + "\n" +
           "*E-mail:* " + data.email + "\n\n" +
           data.message;
         openWhats(text);
