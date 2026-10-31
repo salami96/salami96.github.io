@@ -84,7 +84,7 @@
   function openWhats(text) {
     var msg = text || WHATS_MSG;
     window.open(
-      "https://api.whatsapp.com/send?phone=" + WHATS_PHONE + "&text=" + encodeURIComponent(msg),
+      "https://wa.me/" + WHATS_PHONE + "?text=" + encodeURIComponent(msg),
       "_blank",
       "noopener"
     );
@@ -92,7 +92,7 @@
   document.querySelectorAll("[data-whats]").forEach(function (el) {
     el.addEventListener("click", function (e) {
       e.preventDefault();
-      openWhats();
+      openWhats(el.getAttribute("data-whats-msg"));
     });
   });
 
