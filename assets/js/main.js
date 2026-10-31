@@ -80,6 +80,33 @@
     reveals.forEach(function (el) { el.classList.add("visible"); });
   }
 
+  /* ---------- Hero: vitrine de projetos ---------- */
+  var showcase = document.querySelector(".showcase");
+  if (showcase) {
+    var slides = showcase.querySelectorAll(".showcase-slide");
+    var dots = showcase.querySelectorAll(".showcase-dots button");
+    var urlEl = showcase.querySelector(".showcase-url span");
+    var current = 0, timer;
+    var show = function (i) {
+      slides[current].classList.remove("active");
+      dots[current].classList.remove("active");
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add("active");
+      dots[current].classList.add("active");
+      urlEl.textContent = slides[current].getAttribute("data-url");
+    };
+    var start = function () {
+      clearInterval(timer);
+      timer = setInterval(function () { show(current + 1); }, 5500);
+    };
+    dots.forEach(function (d, i) {
+      d.addEventListener("click", function () { show(i); start(); });
+    });
+    showcase.addEventListener("mouseenter", function () { clearInterval(timer); });
+    showcase.addEventListener("mouseleave", start);
+    start();
+  }
+
   /* ---------- WhatsApp ---------- */
   function openWhats(text) {
     var msg = text || WHATS_MSG;
